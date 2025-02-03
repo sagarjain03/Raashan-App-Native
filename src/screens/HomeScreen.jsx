@@ -5,60 +5,61 @@ import AllItems from "./AllItems";
 import LowStock from "./LowStock";
 import Create from "./Create";
 
-const data = [
-  {
-    "id": 1,
-    "anaajname": "Wheat",
-    "quantity": 50,
-    "unit": "kg"
-  },
-  {
-    "id": 2,
-    "anaajname": "Rice",
-    "quantity": 8,
-    "unit": "kg"
-  },
-  {
-    "id": 3,
-    "anaajname": "Barley",
-    "quantity": 20,
-    "unit": "kg"
-  },
-  {
-    "id": 4,
-    "anaajname": "Maize",
-    "quantity": 25,
-    "unit": "kg"
-  },
-  {
-    "id": 5,
-    "anaajname": "Oats",
-    "quantity": 15,
-    "unit": "kg"
-  },
-  {
-    "id": 6,
-    "anaajname": "Lentils",
-    "quantity": 10,
-    "unit": "kg"
-  },
-  {
-    "id": 7,
-    "anaajname": "Chickpeas",
-    "quantity": 40,
-    "unit": "kg"
-  },
-  {
-    "id": 8,
-    "anaajname": "Millets",
-    "quantity": 35,
-    "unit": "kg"
-  }
-]
+
 
 
 const HomeScreen = () => {
   const [view, setView] = useState(0);
+  const [data, setdata] = useState([
+    {
+      "id": 1,
+      "anaajname": "Wheat",
+      "quantity": 50,
+      "unit": "kg"
+    },
+    {
+      "id": 2,
+      "anaajname": "Rice",
+      "quantity": 8,
+      "unit": "kg"
+    },
+    {
+      "id": 3,
+      "anaajname": "Barley",
+      "quantity": 20,
+      "unit": "kg"
+    },
+    {
+      "id": 4,
+      "anaajname": "Maize",
+      "quantity": 25,
+      "unit": "kg"
+    },
+    {
+      "id": 5,
+      "anaajname": "Oats",
+      "quantity": 15,
+      "unit": "kg"
+    },
+    {
+      "id": 6,
+      "anaajname": "Lentils",
+      "quantity": 10,
+      "unit": "kg"
+    },
+    {
+      "id": 7,
+      "anaajname": "Chickpeas",
+      "quantity": 40,
+      "unit": "kg"
+    },
+    {
+      "id": 8,
+      "anaajname": "Millets",
+      "quantity": 35,
+      "unit": "kg"
+    }
+  ]);
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -78,7 +79,7 @@ const HomeScreen = () => {
       {/* Move rendering inside the return */}
       {view === 0 && <AllItems data= {data}/>}
       {view === 1 && <LowStock data= {data.filter(item => item.quantity < 10)}/>}
-      {view === 2 && <Create />}
+      {view === 2 && <Create data={data} setdata={setdata}/>}
     </View>
   );
   
